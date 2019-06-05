@@ -55,6 +55,27 @@ t_f	parse_map(t_f *f, char* line)
 	return(*f);
 }
 
+t_f	parse_piece(t_f *f, char* line)
+{
+	int		i;
+	int		j;
+
+	j = 0;
+	i = 1;
+	if (ft_strstr(line, "Piece"))
+		*f = re_init(f, line);
+	while (i > 0)
+	{
+		i = get_next_line(0, &line);
+		if (i < 1)
+			break;
+		ft_strcpy(f->p[j], line);
+		ft_memdel((void **)&line);
+		j++;
+	}
+	return(*f);
+}
+
 t_f	read_fd(t_f *f)
 {
 	char		*line;
@@ -71,6 +92,8 @@ t_f	read_fd(t_f *f)
 			break;
 		if (ft_isdigit(line[0]))
 			parse_map(f, line);
+		if (line[0] == '.' || line[0] == '*' || (ft_strstr(line, "Piece")))
+			*f = parse_piece(f, line);
 		ft_memdel((void **)&line);
 	}
 	i = 0;
@@ -78,10 +101,17 @@ t_f	read_fd(t_f *f)
 	{
 		while (i < f->pos.y)
 		{
-		fprintf(file,"%i : %s \n",i,ft_strlen(f->m[i]),f->m[i]);
+		fprintf(file,"%zu : %s \n",ft_strlen(f->m[i]),f->m[i]);
+		i++;
+		}
+		i = 0;
+		while (i < f->sp_y)
+		{
+		fprintf(file,"%zu : %s \n",ft_strlen(f->p[i]),f->p[i]);
 		i++;
 		}
 		fclose(file);
+
 	}
 	return(*f);
 }

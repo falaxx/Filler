@@ -38,30 +38,8 @@ t_f	re_init(t_f *f, char* line)
 	{
 		if (!(f->p[i] = (char *)malloc(sizeof(char) * f->sp_x + 1)))
 			exit(0); //ft_exit
-		f->m[i][f->sp_x] = '\n';
+		f->p[i][f->sp_x] = '\0';
 		i++;
 	}
 	return (*f);
 }
-
-// t_f	parse_piece(t_f *f, char* line)
-// {
-// 	int		i;
-// 	int		j;
-//
-// 	j = 0;
-// 	i = 1;
-// 	if (ft_strstr(line, "Piece"))
-// 		*f = re_init(f, line);
-// 	while (i > 0)
-// 	{
-// 		i = get_next_line(0, &line);
-// 		ft_strcpy(f->p[j], line);
-// 		ft_memdel((void **)&line);
-// 		j++;
-// 	}
-// 	return(*f);
-// }
-
-// if (line[0] == '.' || line[0] == '*' || (ft_strstr(line, "Piece")))
-// 	*f = parse_piece(f, line);
