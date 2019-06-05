@@ -1,0 +1,2 @@
+player = 2
+ sm x = 17 y = 15
