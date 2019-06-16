@@ -1,14 +1,16 @@
 NAME = players/fmerding.filler
 
-SRC_PATH = srcs
+NAME2 = visual
 
-SRC_NAME = main.c read.c init.c
+SRC_PATH = src
+
+SRC_NAME = main.c read.c init.c algo.c
+
+SRC2_NAME = visual/visual.c
 
 CPPFLAGS = -I libft/includes/ -I /usr/local/include/ -MMD
 
-LDFLAGS = -L libft/ -lft  -L /usr/local/include/ -lmlx
-
-LDLIBS = -framework OpenGL -framework AppKit
+LDFLAGS = -L libft/ -lft  -L /usr/local/include/
 
 CC = gcc
 
@@ -17,6 +19,10 @@ CFLAGS = -Werror -Wall -Wextra
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 OBJ_PATH = obj
+
+SDLFLAGS =  $(SDLINCL) -L/Users/fmerding/.brew/Cellar/sdl2/2.0.9_1/lib -lSDL2
+
+SDLINCL = -I /Users/fmerding/.brew/Cellar/sdl2/2.0.9_1/include
 
 HEADER_PATH = includes/
 
@@ -51,6 +57,18 @@ fclean: clean
 
 re: fclean
 	$(MAKE) all
+
+visu:
+	gcc $(SRC2_NAME) $(SDLFLAGS) $(CPPFLAGS) $(LDFLAGS) -o visual/$(NAME2)
+
+revisu:
+	rm -f $(SRC2_NAME:.c=.o)
+	rm -f $(SRC2_NAME:.c=.d)
+	make visu
+
+norme:
+	norminette $(SRC)
+	norminette $(INCLUDES)
 
 .PHONY: make clean fclean re
 

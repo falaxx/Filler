@@ -1,2 +1,38 @@
 player = 2
  sm x = 17 y = 15
+player = 2
+ sm x = 17 y = 15
+player = 2
+ sm x = 17 y = 15
+player = 2
+ sm x = 17 y = 15
+player = 1
+ sm x = 17 y = 15
+player = 1
+ sm x = 17 y = 15
+player = 1
+ sm x = 17 y = 15
+player = 1
+ sm x = 17 y = 15
+player = 1
+ sm x = 17 y = 15
+player = 1
+ sm x = 17 y = 15
+player = 1
+ sm x = 17 y = 15
+player = 1
+ sm x = 17 y = 15
+player = 1
+ sm x = 17 y = 15
+player = 1
+ sm x = 40 y = 24
+player = 1
+ sm x = 40 y = 24
+player = 1
+ sm x = 40 y = 24
+player = 1
+ sm x = 40 y = 24
+player = 1
+ sm x = 40 y = 24
+player = 1
+ sm x = 40 y = 24

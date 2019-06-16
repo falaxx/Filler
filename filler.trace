@@ -1,6 +1,6 @@
-seed = 585
-X: timedout
-O: error on input
+seed = 3987
+players/fmerding.filler: Segfault at 0
+X: error on input
 players/hcao.filler won
 Score:
-19AGAINST0
+0AGAINST5
