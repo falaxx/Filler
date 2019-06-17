@@ -80,7 +80,8 @@ int		find_enemy(t_vec2 pos, t_f *f)
 	{
 		while (x < f->sm_x)
 		{
-			if (f->m[y][x] == 'O' || f->m[y][x] == 'o')
+			if (((f->m[y][x] == 'O' || f->m[y][x] == 'o') && f->player == 2)
+			|| ((f->m[y][x] == 'X' || f->m[y][x] == 'x') && f->player == 1))
 			{
 				dis = abs(pos.x - x) + abs(pos.y - y);
 				if (dis < res)
@@ -99,6 +100,7 @@ t_f		find_all(t_vec2 res, t_f f)
 	int x = 0;
 	int y = 0;
 	t_vec2 pos;
+		f.enemy = 0;
 	while (y < f.sp_y)
 	{
 		while (x < f.sp_x)
@@ -107,7 +109,7 @@ t_f		find_all(t_vec2 res, t_f f)
 			{
 				pos.x = x + res.x;
 				pos.y = y + res.y;
-				f.enemy = find_enemy(pos, &f);
+				f.enemy += find_enemy(pos, &f);
 			}
 			x++;
 		}
@@ -123,6 +125,7 @@ t_vec2 algo(t_f *f)
 	t_vec2 save;
 	save = f->minpos;
 	res = f->minpos;
+	f->enemy_old = 1000000000;
 	if (f->player == 2)
 	{
 		while (res.y < f->sm_y)
@@ -147,13 +150,36 @@ t_vec2 algo(t_f *f)
 						save = res;
 					}
 				}
-				else
+				res.x++;
+				if (res.x == f->sm_x - f->sp_x +1)
 				{
-					if (f->empty < f->empty_old)
-					{
-						f->empty_old = f->empty;
+					res.x = f->minpos.x;
+					res.y++;
+				}
+			}
+		}
+	}
+	if (f->player == 1)
+	{
+		while (res.y < f->sm_y)
+		{
+			if (check_p1(res, *f) == 0)
+			{
+				res.x++;
+				if (res.x == f->sm_x - f->sp_x +1)
+				{
+					res.x = f->minpos.x;
+					res.y++;
+				}
+			}
+			else
+			{
+				*f = find_all(res, *f);
+				if (f->enemy < f->enemy_old)
+				{
+					f->enemy_old = f->enemy;
+					if (f->touched == 0)
 						save = res;
-					}
 				}
 				res.x++;
 				if (res.x == f->sm_x - f->sp_x +1)
@@ -164,7 +190,13 @@ t_vec2 algo(t_f *f)
 			}
 		}
 	}
-
+	if (f->enemy_old == 1000000000)
+	{
+		ft_putchar('\n');
+		ft_exit(f);
+	}
+	// if (f->enemy_old < 3)
+	// 	f->touched = 1;
 	// if (f->player == 1)
 	// {
 	// 	while (res.y < f->sm_y)
