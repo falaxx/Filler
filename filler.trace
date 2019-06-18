@@ -1,6 +1,5 @@
-seed = 3987
-players/fmerding.filler: Segfault at 0
+seed = 2703
 X: error on input
-players/hcao.filler won
+players/fmerding.filler won
 Score:
-0AGAINST5
+169AGAINST185

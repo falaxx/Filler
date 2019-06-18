@@ -18,11 +18,11 @@ typedef struct	s_f
 	int		player; // 1 ou 2
 	int		test; // pour putstr f->test
 	int		done; // surveille lavancement dans la boucle 4 = fini
-	int		empty; // places autour de la piece
-	int		empty_old; // places autour de la piece
 	int		enemy; // distance avec lennemi /
 	int		enemy_old; // distance avec lennemi /
-	int		touched;
+	int		i;
+	int		j;
+	int		k;
 }				t_f;
 
 t_f		read_fd(t_f *f);

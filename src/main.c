@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmerding <fmerding@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/18 16:50:35 by fmerding          #+#    #+#             */
+/*   Updated: 2019/06/18 17:13:03 by fmerding         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
-void ft_exit(t_f *f)
+void	ft_exit(t_f *f)
 {
 	int i;
-	i = 0;
 
+	i = 0;
 	if (f->m != NULL)
 	{
-		while ( i < f->sm_y)
+		while (i < f->sm_y)
 		{
 			if (f->m[i] != NULL)
 				ft_memdel((void **)&f->m[i]);
@@ -18,7 +30,7 @@ void ft_exit(t_f *f)
 	i = 0;
 	if (f->p != NULL)
 	{
-		while ( i < f->sp_y)
+		while (i < f->sp_y)
 		{
 			if (f->p[i] != NULL)
 				ft_memdel((void **)&f->p[i]);
@@ -28,39 +40,19 @@ void ft_exit(t_f *f)
 	}
 	exit(0);
 }
-int	main(void)
+
+int		main(void)
 {
 	t_f f;
 
 	f.sm_x = 0;
 	f.sm_y = 0;
+	f.i = 0;
+	f.j = 0;
+	f.k = 0;
 	f.player = 1;
 	f.start.x = -2;
 	f.done = 0;
-	f.touched = 0;
 	f = read_fd(&f);
-	// FILE* file = NULL;
-	// file = fopen("read.txt", "w");
-	// FILE* file2 = NULL;
-	// file2 = fopen("first.txt", "a");
-	// int i = 0;
-	// if (file2 != NULL)
-	// {
-	// fclose(file2);
-	// }
-	// printf("caca boudain");
-	// if (file != NULL)
-	// {
-	// 	while (i < f.sm_y)
-	// 	{
-	// 	i++;
-	// 	}
-	// 	i = 0;
-	// 	while (i < f.sp_y)
-	// 	{
-	// 	i++;
-	// 	}
-	// 	fclose(file);
-	// }
 	return (0);
 }
