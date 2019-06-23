@@ -4,9 +4,7 @@ NAME2 = visual
 
 SRC_PATH = src
 
-SRC_NAME = main.c read.c init.c algo.c
-
-SRC2_NAME = visual/visual.c
+SRC_NAME = main.c read.c init.c algo.c sdl.c
 
 CPPFLAGS = -I libft/includes/ -I /usr/local/include/ -MMD
 
@@ -22,13 +20,14 @@ OBJ_PATH = obj
 
 SDLFLAGS =  $(SDLINCL) -L/Users/fmerding/.brew/Cellar/sdl2/2.0.9_1/lib -lSDL2
 
-SDLINCL = -I /Users/fmerding/.brew/Cellar/sdl2/2.0.9_1/include
+SDLINCL = -I /Users/fmerding/.brew/Cellar/sdl2/2.0.9_1/include/SDL2
 
 HEADER_PATH = includes/
 
 HEADER_NAME = filler.h
 
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
@@ -38,10 +37,10 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C libft/
-	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $(SDLFLAGS) $(LDLIBS) $^ -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -I $(HEADER_PATH) -o $@ -c $<
+	$(CC) $(CFLAGS) $(CPPFLAGS) -I $(HEADER_PATH) $(SDLINCL)  -o $@ -c $<
 
 $(OBJ_PATH):
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
@@ -51,20 +50,13 @@ clean:
 	rm -f $(OBJ) $(OBJ:.o=.d)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
 
+
 fclean: clean
 	make fclean -C libft/
 	rm -f $(NAME)
 
 re: fclean
 	$(MAKE) all
-
-visu:
-	gcc $(SRC2_NAME) $(SDLFLAGS) $(CPPFLAGS) $(LDFLAGS) -o visual/$(NAME2)
-
-revisu:
-	rm -f $(SRC2_NAME:.c=.o)
-	rm -f $(SRC2_NAME:.c=.d)
-	make visu
 
 norme:
 	norminette $(SRC)
