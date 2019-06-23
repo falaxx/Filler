@@ -6,7 +6,7 @@
 /*   By: fmerding <fmerding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 16:54:46 by fmerding          #+#    #+#             */
-/*   Updated: 2019/06/23 19:31:05 by fmerding         ###   ########.fr       */
+/*   Updated: 2019/06/23 19:32:35 by fmerding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ t_f	read_fd_2(t_f *f, char *line, char *tmp)
 			tmp = ft_itoa(f->sm_y);
 			f->sm_x = ft_getnbr_n(line, 9 + ft_strlen(tmp));
 			free(tmp);
-			initialize_sdl(f);
 		}
 		if (f->sm_y != 0)
 			*f = init(f);
