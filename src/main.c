@@ -6,7 +6,7 @@
 /*   By: fmerding <fmerding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 16:50:35 by fmerding          #+#    #+#             */
-/*   Updated: 2019/06/24 04:24:13 by fmerding         ###   ########.fr       */
+/*   Updated: 2019/06/24 06:10:09 by fmerding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_exit2(t_f *f)
 {
-	if (f->window != NULL)
-		ft_memdel((void **)f->window);
-	if (f->renderer != NULL)
-		ft_memdel((void **)f->renderer);
 	if (f->tex != NULL)
-		ft_memdel((void **)f->tex);
+		SDL_DestroyTexture(f->tex->texture);
+	if (f->renderer != NULL)
+		SDL_DestroyRenderer(f->renderer);
+	if (f->window != NULL)
+		SDL_DestroyWindow(f->window);
 	exit(0);
 }
 
@@ -56,8 +56,6 @@ int		main(void)
 {
 	t_f f;
 
-	f.width = 600;
-	f.height = 800;
 	f.sm_x = 0;
 	f.sm_y = 0;
 	f.i = 0;

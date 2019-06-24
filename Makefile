@@ -1,10 +1,8 @@
-NAME = players/fmerding.filler
-
-NAME2 = visual
+NAME = fmerding.filler
 
 SRC_PATH = src
 
-SRC_NAME = main.c read.c init.c algo.c sdl.c
+SRC_NAME = main.c read.c init.c algo.c sdl.c color.c find.c
 
 CPPFLAGS = -I libft/includes/ -I /usr/local/include/ -MMD
 

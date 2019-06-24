@@ -6,7 +6,7 @@
 /*   By: fmerding <fmerding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 16:47:39 by fmerding          #+#    #+#             */
-/*   Updated: 2019/06/24 04:23:50 by fmerding         ###   ########.fr       */
+/*   Updated: 2019/06/24 05:17:06 by fmerding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_f	init(t_f *f)
 	f->pos.y = 0;
 	f->start.x = -1;
 	f->start.y = -1;
-	f->test = 0;
 	if (!(f->m = (char **)malloc(sizeof(char*) * f->sm_y)))
 		ft_exit(f);
 	while (++i < f->sm_y)
