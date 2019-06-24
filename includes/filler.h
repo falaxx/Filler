@@ -6,6 +6,9 @@
 # include "../libft/includes/libft.h"
 # include <SDL.h>
 
+# define WIDTH 1000
+# define HEIGHT 1000
+
 typedef struct		s_texture {
 	Uint32			*content;
 	SDL_Texture		*texture;
@@ -33,6 +36,8 @@ typedef struct	s_f
 	int				k;//
 	int				height;
 	int				width;
+	int				ppx;
+	int				ppy;
 	SDL_Window		*window;//
 	SDL_Renderer	*renderer;//
 	t_texture		*tex;
@@ -47,5 +52,5 @@ t_vec2	algo(t_f *f);
 void	ft_exit(t_f *f);
 void	initialize_sdl(t_f *f);
 void	update_image(t_f *f, t_texture *tex);
-void	set_pixel(t_texture *text, Uint32 color, t_vec2 coord, t_f *f);
+void	set_pixel(t_texture *text, Uint32 color, t_vec2 coord);
 #endif

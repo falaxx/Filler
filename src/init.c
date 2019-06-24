@@ -6,7 +6,7 @@
 /*   By: fmerding <fmerding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 16:47:39 by fmerding          #+#    #+#             */
-/*   Updated: 2019/06/23 19:19:29 by fmerding         ###   ########.fr       */
+/*   Updated: 2019/06/24 04:23:50 by fmerding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ t_f	init(t_f *f)
 	i = -1;
 	f->pos.x = 0;
 	f->pos.y = 0;
-	f->m = NULL;
-	f->p = NULL;
 	f->start.x = -1;
 	f->start.y = -1;
 	f->test = 0;
@@ -37,6 +35,8 @@ t_f	init(t_f *f)
 		f->m[i][f->sm_x] = '\0';
 		i++;
 	}
+	f->ppx = 1000 / f->sm_x;
+	f->ppy = 1000 / f->sm_y;
 	f->done = 1;
 	return (*f);
 }

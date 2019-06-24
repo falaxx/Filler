@@ -22,14 +22,10 @@ int	check_inbounds(t_vec2 res, t_f f)
 	return (1);
 }
 
-int	check_p2(t_vec2 res, t_f f)
+int	check_p2(t_vec2 res, t_f f, int x, int y)
 {
-	int x;
-	int y;
 	int nb;
 
-	x = 0;
-	y = 0;
 	nb = 0;
 	if (check_inbounds(res, f) == 0)
 		return (0);
@@ -53,14 +49,10 @@ int	check_p2(t_vec2 res, t_f f)
 	return (1);
 }
 
-int	check_p1(t_vec2 res, t_f f)
+int	check_p1(t_vec2 res, t_f f, int x, int y)
 {
-	int x;
-	int y;
 	int nb;
 
-	x = 0;
-	y = 0;
 	nb = 0;
 	if (check_inbounds(res, f) == 0)
 		return (0);
@@ -93,7 +85,6 @@ int		find_enemy(t_vec2 pos, t_f *f)
 
 	x = 0;
 	y = 0;
-	res = 0;
 	res = 1000000000;
 	while (y < f->sm_y)
 	{
@@ -141,7 +132,7 @@ t_f		find_all(t_vec2 res, t_f f)
 	return (f);
 }
 
-t_vec2 algo(t_f *f)
+t_vec2	algo(t_f *f)
 {
 	t_vec2 res;
 	t_vec2 save;
@@ -153,7 +144,7 @@ t_vec2 algo(t_f *f)
 	{
 		while (res.y < f->sm_y)
 		{
-			if (check_p2(res, *f) == 0)
+			if (check_p2(res, *f, 0, 0) == 0)
 			{
 				res.x++;
 				if (res.x == f->sm_x - 1)
@@ -184,7 +175,7 @@ t_vec2 algo(t_f *f)
 	{
 		while (res.y < f->sm_y)
 		{
-			if (check_p1(res, *f) == 0)
+			if (check_p1(res, *f, 0, 0) == 0)
 			{
 				res.x++;
 				if (res.x == f->sm_x - 1)
@@ -212,5 +203,5 @@ t_vec2 algo(t_f *f)
 	}
 	if (f->enemy_old == 1000000000)
 		ft_exit(f);
-	return(save);
+	return (save);
 }

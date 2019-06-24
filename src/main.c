@@ -6,11 +6,22 @@
 /*   By: fmerding <fmerding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 16:50:35 by fmerding          #+#    #+#             */
-/*   Updated: 2019/06/23 18:55:42 by fmerding         ###   ########.fr       */
+/*   Updated: 2019/06/24 04:24:13 by fmerding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+void	ft_exit2(t_f *f)
+{
+	if (f->window != NULL)
+		ft_memdel((void **)f->window);
+	if (f->renderer != NULL)
+		ft_memdel((void **)f->renderer);
+	if (f->tex != NULL)
+		ft_memdel((void **)f->tex);
+	exit(0);
+}
 
 void	ft_exit(t_f *f)
 {
@@ -38,7 +49,7 @@ void	ft_exit(t_f *f)
 		}
 		ft_memdel((void **)&f->p);
 	}
-	exit(0);
+	ft_exit2(f);
 }
 
 int		main(void)
@@ -55,6 +66,8 @@ int		main(void)
 	f.player = 1;
 	f.start.x = -2;
 	f.done = 0;
+	f.m = NULL;
+	f.p = NULL;
 	f = read_fd(&f);
 	return (0);
 }
