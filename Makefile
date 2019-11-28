@@ -1,4 +1,4 @@
-NAME = fmerding.filler
+NAME = players/fmerding.filler
 
 SRC_PATH = src
 
@@ -16,9 +16,9 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 OBJ_PATH = obj
 
-SDLFLAGS =  $(SDLINCL) -L/Users/fmerding/.brew/Cellar/sdl2/2.0.9_1/lib -lSDL2
+SDLFLAGS =  $(SDLINCL) -L/Users/fmerding/.brew/Cellar/sdl2/2.0.10/lib -lSDL2
 
-SDLINCL = -I /Users/fmerding/.brew/Cellar/sdl2/2.0.9_1/include/SDL2
+SDLINCL = -I /Users/fmerding/.brew/Cellar/sdl2/2.0.10/include/SDL2
 
 HEADER_PATH = includes/
 
