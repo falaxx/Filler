@@ -30,10 +30,7 @@ Then simply
 ```
 make
 ```
-or 
-```
-make re
-```
+
 ## Usage 
 ```
  ./filler_vm -f path [-i | -p1 path | -p2 path] [-s | -q | -t time]
