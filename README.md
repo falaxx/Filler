@@ -13,7 +13,7 @@ The game takes place in your terminal normally but as you can see it's not great
 
 ![](terminal.gif)
 
-but i also make a visualisation with the SDL2, here is multiple games where i face myself 
+But i also make a visualisation with the SDL2, here is multiple games where i face myself 
 
 You can see my strategy is pretty simple, i want to circle my opponent with a heat map calculation in my code.
 
